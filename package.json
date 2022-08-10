@@ -1,0 +1,20 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "This is Todo list project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Morteza Soltanpour",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "bootstrap-v4-rtl": "^4.6.0-3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "font-awesome": "^4.7.0",
+    "nodemon": "^2.0.19",
+    "uuid": "^8.3.2"
+  }
+}

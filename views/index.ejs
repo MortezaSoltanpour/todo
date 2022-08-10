@@ -1,0 +1,60 @@
+<%- include ('./includes/head.ejs') %>
+
+        <div class="form-group">
+            <h1>کارهای <small>روزمره</small></h1>
+            <form
+                action="/admin/add-todo"
+                role="form"
+                class="row w-50 justify-content-center mx-auto"
+                method="POST"
+            >
+                <div class="input-group">
+                    <input
+                        type="text"
+                        name="todo"
+                        class="form-control w-50"
+                        placeholder="کار امروز"
+                    />
+                    <div class="input-group-prepend">
+                        <button type="submit" class="btn btn-primary fa fa-plus"/>
+                    </div>
+                </div>
+            </form>
+            <div class="mx-auto w-50 mb-3 alert alert-primary row">
+                <p class="d-inline col">کارهای انجام شده : <span class="badge badge-success badge-pill"> <%= compltedUtils %>  </span></p>
+                <p class="d-inline col">کارهای باقی مانده امروز : <span class="badge badge-warning badge-pill"> <%= remainingTodos  %>  </span></p>
+            </div>
+
+<% if(todos.length>0) {%> 
+
+<ul class="list-unstyled" id="todo">
+    <% for(let todo of todos){ %> 
+<li>
+    <div class="alert alert-<%= todo.completed?"success":"secondary" %> ">
+<% if(todo.completed) { %> 
+    <del> <%= todo.text %> </del>
+    <a href="/admin/delete-todo/<%= todo.id %>" class="close fa fa-trash" style="color:red"></a>
+
+<% } else { %> 
+
+    <%= todo.text %> 
+    <a href="/admin/delete-todo/<%= todo.id %>" class="close fa fa-trash" style="color:red"></a>
+    <a href="/admin/completed-todo/<%= todo.id %>" class="close fa fa-check-square mr-2" style="color:green"></a>
+
+<% }  %> 
+
+        
+    </div>
+</li>
+        <% } %> 
+</ul>
+
+
+
+<%} else { %> 
+<div class="alert alert-warning w-50 mx-auto" role="alert">
+    <h4 class="alert-heading">هیچ کاری برای امروز ثبت نشده است</h4>
+</div>
+    <% } %> 
+        </div>
+  <% include ('./includes/footer.ejs') %> 
